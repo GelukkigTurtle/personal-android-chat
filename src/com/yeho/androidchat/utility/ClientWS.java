@@ -1,4 +1,4 @@
-package com.yeho.androidchat;
+package com.yeho.androidchat.utility;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;

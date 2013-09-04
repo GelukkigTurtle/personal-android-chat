@@ -6,8 +6,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 
-import com.yeho.personalmsj.R;
-
 public class Activity_Home extends Activity {
 
 	@Override

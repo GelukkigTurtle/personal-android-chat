@@ -12,7 +12,6 @@ import org.xmlpull.v1.XmlPullParserException;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
@@ -31,8 +30,7 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
-import com.yeho.androidchat.database.SQLiteHelper;
-import com.yeho.personalmsj.R;
+import com.yeho.androidchat.utility.ClientWS;
 
 
 public class LoginActivity extends Activity {
@@ -123,59 +121,28 @@ public class LoginActivity extends Activity {
 	public void lanzar(View view) {
 
 		Log.v("LOGIN_ACTIVITY", "INICIA METODO lanzar");
-		if (userText.getText().toString().equals("") || passWord.getText().toString().equals("")) {
-			Toast.makeText(LoginActivity.this,
-					"Favor de capturar el usuario y el password",
-					Toast.LENGTH_SHORT).show();
+		if (userText.getText().toString().equals("")|| passWord.getText().toString().equals("")) {
+			Toast.makeText(LoginActivity.this,"Favor de capturar el usuario y el password",Toast.LENGTH_SHORT).show();
 			return;
 		}
-	
-		progress.setVisibility(0);
 
-		// //// CALL LOGIN WEB SERVICE //////
-//		if (isInternet()) {
-			Log.v("LOGIN_ACTIVITY", "VERIFICAR CREDENCIALES A TRAVES DEL WEB SERVICE.");
-			callWS();
-//		} else {
-	
-		
-				if (true) {
-					Log.v("LOGIN_ACTIVITY", "LOGIN OK.");
-					//String displayname = getDisplay(UserData.getUser()); //YEHO TODO aqui tengo que poner la consulta a la BD
-					Log.v("YEHO", "EL DIsPLAYNAME Q MANDO AL HOME 2: "); //aqui hay q sacarlo de la BD
-					String displayname = userText.getText().toString();
-					
-					startHome(displayname);
-				}
-	/*	
-				Context context = getApplicationContext();
-				CharSequence text = "Usuario o contraseña invalido.";
-				int duration = Toast.LENGTH_LONG;
-				Toast toast = Toast.makeText(context, text, duration);
-				toast.show();
-				return;
-	*/	
+		// // CALL LOGIN WEB SERVICE //////
+		Log.v("LOGIN_ACTIVITY","VERIFICAR CREDENCIALES A TRAVES DEL WEB SERVICE.");
+		callWS();
+		if (true) {
+			Log.v("LOGIN_ACTIVITY", "LOGIN OK.");
+			String displayname = userText.getText().toString();
+			startHome(displayname);
 		}
-
-	
-
-	public String getDisplay(String usu) {
-		String name = "";
-		SQLiteHelper usdbh = new SQLiteHelper(this, "berrendo.sqlite", null, 1);
-		db = usdbh.getWritableDatabase();
-		Cursor c = db.rawQuery( "SELECT displayname from usuarios where usuario='" + usu + "'", null);
-		// Nos aseguramos de que existe al menos un registro
-		int cont = 0;
-		String estado = null;
-		if (c.moveToFirst()) {
-			do {
-				name = c.getString(0);
-				cont++;
-			} while (c.moveToNext());
-		}
-		db.close();
-		return name;
+		/*
+		 * Context context = getApplicationContext(); CharSequence text =
+		 * "Usuario o contraseña invalido."; int duration = Toast.LENGTH_LONG;
+		 * Toast toast = Toast.makeText(context, text, duration); toast.show();
+		 * return;
+		 */
 	}
+
+	
 	
 	public boolean isInternet() {
 

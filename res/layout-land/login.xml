@@ -12,7 +12,7 @@
             android:layout_height="200dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="-50dp"
-            android:layout_marginTop="590dp"
+            android:layout_marginTop="290dp"
             android:background="@color/fondologin"
             android:gravity="center_vertical" >
 

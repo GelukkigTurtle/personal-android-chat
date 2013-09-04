@@ -1,17 +1,19 @@
 package com.yeho.androidchat;
 
-import com.yeho.personalmsj.R;
 
-import android.os.Bundle;
+
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
 
-public class MainActivity extends Activity {
+import com.yeho.personalmsj.R;
+
+public class Activity_Home extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_home);
 	}
 
 	@Override

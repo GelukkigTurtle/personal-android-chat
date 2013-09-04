@@ -169,39 +169,7 @@ public class LoginActivity extends Activity {
 		i.putExtra("displayName",displayName);
 		startActivity(i);
 	}
-/*
-	private boolean auth() { 
 
-		boolean retorno = false;
-
-		SQLiteHelper usdbh = new SQLiteHelper(this, "berrendo.sqlite", null, 1);
-		SQLiteDatabase db = usdbh.getWritableDatabase();
-		Cursor c = db.rawQuery("SELECT password FROM usuarios WHERE usuario='" + userText.getText().toString() + "' ", null);
-
-		// Nos aseguramos de que existe al menos un registro
-		if (c.moveToFirst()) {
-			// Recorremos el cursor hasta que no haya mas registros
-			do {
-				String password = c.getString(0);
-				Log.v("LOGIN_ACTIVITY", "PWD FROM DB[" + password + "]");
-				Util u = new Util();
-
-				String passwmd5 = u.md5(passWord.getText().toString());
-				Log.v("LOGIN_ACTIVITY", "PWD MD5[" + passwmd5 + "]");
-
-   	          if (password.equals(passWord.getText().toString()))
-   	          {
-   	        	  retorno = true;
-   	          }
-			//	retorno = passwmd5.equals(password);
-			} while (c.moveToNext());
-		}
-
-		c.close();
-		return retorno;
-
-	}
-*/
 	protected void callWS() {
 		Thread t = new Thread() {
 			@Override
